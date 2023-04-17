@@ -1,0 +1,379 @@
+nav {
+  padding: 10px 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: flex-start;
+}
+
+.nav-logo__icon {
+  font-size: 30px;
+}
+
+.nav-logo__icon,
+.nav-logo__center {
+  margin-right: 10px;
+}
+
+.nav-logo__center {
+  width: 1px;
+  height: 30px;
+  background-color: rgba(128, 128, 128, 0.8);
+}
+
+.nav-logo__title {
+  font-family: "Lobster", cursive;
+  font-size: 30px;
+}
+
+.nav-search {
+  position: relative;
+}
+
+.nav-search .nav-search__input {
+  height: 23px;
+  position: relative;
+  top: 2px;
+  padding-left: 60px;
+  border: 1px solid rgba(128, 128, 128, 0.8);
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.nav-search .nav-search__icon {
+  position: absolute;
+  top: 5px;
+  left: 40px;
+  color: rgba(128, 128, 128, 0.8);
+}
+
+.nav-info img {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.main-wrapper {
+  padding: 70px 210px;
+  display: flex;
+  justify-content: center;
+}
+
+.feeds {
+  width: 600px;
+}
+
+.feeds article {
+  border: 1px solid rgba(128, 128, 128, 0.8);
+  border-radius: 3px;
+}
+
+.feeds article .feed-content {
+  padding: 0 10px;
+}
+
+.feeds article .feed-content span:first-child {
+  font-weight: bold;
+}
+
+.feeds article .feed-content span:last-child {
+  color: gray;
+}
+
+.feed-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.feed-icons,
+.feed-heart {
+  padding: 10px;
+}
+
+.feed-icons i {
+  font-size: 25px;
+}
+
+.feed-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.feed-icons__left {
+  display: flex;
+  align-items: center;
+}
+
+.feed-icons__left i {
+  margin-right: 10px;
+}
+
+.feed-icons__left i:first-child {
+  color: red;
+}
+
+.feed-heart {
+  padding-top: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.feed-heart img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.feed-heart div span {
+  font-weight: bold;
+}
+
+.feed-comments {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-content,
+.feed-comments,
+.feed-time {
+  line-height: 20px;
+}
+
+.feed-comments p {
+  display: flex;
+  align-items: center;
+}
+
+.feed-comments p span {
+  font-weight: bold;
+}
+
+.comment-id {
+  margin-right: 5px;
+}
+
+.comment-delete:hover {
+  cursor: pointer;
+}
+
+.heart:hover {
+  cursor: pointer;
+}
+
+.feed-time {
+  color: gray;
+  padding: 0 10px 10px 10px;
+}
+
+.write-comment {
+  position: relative;
+}
+
+.write-comment input {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  padding-top: 15px;
+  border-top: 1px solid gray;
+  margin-bottom: 3px;
+}
+
+.write-comment input:focus {
+  outline-style: none;
+}
+
+.write-comment span {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  color: skyblue;
+  font-size: 13px;
+}
+
+.comment-btn__on:hover {
+  cursor: pointer;
+}
+
+.feeds-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.feeds-header__profile {
+  display: flex;
+  align-items: center;
+}
+
+.feeds-header__profile span {
+  font-weight: bold;
+}
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.feeds,
+.story,
+.recommendation {
+  border-radius: 3px;
+}
+
+.story .header,
+.recommendation .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.story .header span:first-child,
+.recommendation .header span:first-child {
+  color: gray;
+}
+
+.story {
+  padding: 10px;
+}
+
+.story-users {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.story-users div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-users div span {
+  line-height: 20px;
+}
+
+.story-users div span:first-child {
+  font-weight: bold;
+}
+
+.story-users div span:first-child .story .header span:last-child,
+.recommendation .header span:last-child {
+  font-weight: bold;
+}
+
+.main-right {
+  width: 280px;
+  margin-left: 30px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-profile__info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  line-height: 20px;
+}
+
+.user-name {
+  color: gray;
+}
+
+.user-profile__img img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.story {
+  height: 200px;
+}
+
+.story-users img {
+  width: 40px;
+  height: 40px;
+}
+
+.story-users img,
+.recommendation-users img {
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.recommendation {
+  height: 170px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.recommendation-users {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  position: relative;
+}
+
+.recommendation-users div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 20px;
+}
+
+.recommendation-users div span:first-child {
+  font-weight: bold;
+}
+
+.recommendation-users div span:last-child {
+  color: gray;
+}
+
+.recommendation-users img {
+  width: 35px;
+  height: 35px;
+}
+
+.follow {
+  position: absolute;
+  right: 0px;
+  color: #0095f6;
+  font-weight: bold;
+}
+
+.story,
+.recommendation {
+  margin-top: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.8);
+}
+
+.footer {
+  color: gray;
+}
+
+.footer p {
+  margin-bottom: 25px;
+  line-height: 20px;
+}
