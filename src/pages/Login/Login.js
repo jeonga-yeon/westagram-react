@@ -1,30 +1,36 @@
 import React from "react";
-import "./Login.css";
+import "./Login.scss";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate("/main");
+  };
   return (
-    <main class="container">
-      <div class="wrapper">
-        <div class="login-wrapper">
-          <div class="login">
-            <h1 class="login-title">Westagram</h1>
-            <div class="login-id__wrapper">
+    <main className="container">
+      <div className="wrapper">
+        <div className="login-wrapper">
+          <div className="login">
+            <h1 className="login-title">Westagram</h1>
+            <div className="login-id__wrapper">
               <input
                 placeholder="전화번호, 사용자 이름 또는 이메일"
                 type="text"
-                class="login-id"
+                className="login-id"
               />
             </div>
-            <div class="login-password__wrapper">
+            <div className="login-password__wrapper">
               <input
-                class="login-password"
+                className="login-password"
                 placeholder="비밀번호"
                 type="password"
               />
             </div>
-
-            <button class="login-button">로그인</button>
-            <span class="find-password">비밀번호를 잊으셨나요?</span>
+            <button className="login-button" onClick={handleLogin}>
+              로그인
+            </button>
+            <span className="find-password">비밀번호를 잊으셨나요?</span>
           </div>
         </div>
       </div>
