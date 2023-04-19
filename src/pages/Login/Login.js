@@ -1,11 +1,11 @@
-import React from "react";
-import "./Login.scss";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './Login.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
   const handleLogin = () => {
-    navigate("/main");
+    navigate('/main');
   };
   return (
     <main className="container">

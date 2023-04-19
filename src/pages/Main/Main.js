@@ -1,5 +1,5 @@
-import React from "react";
-import "./Main.scss";
+import React from 'react';
+import './Main.scss';
 
 const Main = () => {
   return (
@@ -7,8 +7,8 @@ const Main = () => {
       <div className="wrapper">
         <nav>
           <div className="nav-logo">
-            <i className="fab fa-instagram nav-logo__icon"></i>
-            <div className="nav-logo__center"></div>
+            <i className="fab fa-instagram nav-logo__icon" />
+            <div className="nav-logo__center" />
             <h1 className="nav-logo__title">Westagram</h1>
           </div>
           <div className="nav-search">
@@ -17,7 +17,7 @@ const Main = () => {
               placeholder="검색"
               className="nav-search__input"
             />
-            <i className="fas fa-search nav-search__icon"></i>
+            <i className="fas fa-search nav-search__icon" />
           </div>
           <div className="nav-info">
             <img
@@ -46,7 +46,7 @@ const Main = () => {
                   />
                   <span>candy_lp</span>
                 </div>
-                <i className="fas fa-ellipsis-h"></i>
+                <i className="fas fa-ellipsis-h" />
               </div>
               <img
                 alt="피드 이미지"
@@ -55,8 +55,8 @@ const Main = () => {
               />
               <div className="feed-icons">
                 <div className="feed-icons__left">
-                  <i className="fas fa-heart"></i>
-                  <i className="far fa-comment fa-flip-horizontal"></i>
+                  <i className="fas fa-heart" />
+                  <i className="far fa-comment fa-flip-horizontal" />
                   <img
                     alt="업로드 이미지"
                     src="https://icon-library.com/images/upload-icon-png/upload-icon-png-16.jpg"
@@ -64,7 +64,7 @@ const Main = () => {
                     height="25"
                   />
                 </div>
-                <i className="far fa-bookmark"></i>
+                <i className="far fa-bookmark" />
               </div>
               <div className="feed-heart">
                 <img
@@ -88,7 +88,7 @@ const Main = () => {
                     <span className="comment-content">👍👍</span>
                   </p>
                   <div className="comment-icon__wrapper">
-                    <i className="far fa-heart heart false"></i>
+                    <i className="far fa-heart heart false" />
                   </div>
                 </div>
               </div>
