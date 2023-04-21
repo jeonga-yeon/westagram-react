@@ -1,25 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Main.scss';
+import Comment from './Comment';
 
 const Main = () => {
+  const [comments, setComments] = useState([]);
+  const [value, setValue] = useState('');
+
+  const handleComment = event => {
+    const comment = event.target.value;
+    if (comment.length <= 0) return;
+    setValue(comment);
+    if (event.keyCode === 13) {
+      setComments(current => [...current, comment]);
+      setValue('');
+    }
+  };
+
+  const handleCommentBtn = () => {
+    if (value <= 0) return;
+    setComments(current => [...current, value]);
+    setValue('');
+  };
+
+  const handleCommentInput = event => {
+    setValue(event.target.value);
+  };
+
   return (
-    <div className="container">
+    <div className="main">
       <div className="wrapper">
-        <nav>
-          <div className="nav-logo">
-            <i className="fab fa-instagram nav-logo__icon" />
-            <div className="nav-logo__center" />
-            <h1 className="nav-logo__title">Westagram</h1>
+        <nav className="navWrapper">
+          <div className="navLogo">
+            <i className="fab fa-instagram navLogoIcon" />
+            <div className="navLogoCenter" />
+            <h1 className="navLogoTitle">Westagram</h1>
           </div>
-          <div className="nav-search">
-            <input
-              type="text"
-              placeholder="검색"
-              className="nav-search__input"
-            />
-            <i className="fas fa-search nav-search__icon" />
+          <div className="navSearch">
+            <input type="text" placeholder="검색" className="navSearchInput" />
+            <i className="fas fa-search navSearchIcon" />
           </div>
-          <div className="nav-info">
+          <div className="navInfo">
             <img
               alt="탐색 이미지"
               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png"
@@ -34,14 +54,14 @@ const Main = () => {
             />
           </div>
         </nav>
-        <main className="main-wrapper">
+        <main className="mainWrapper">
           <section className="feeds">
             <article>
-              <div className="feeds-header">
-                <div className="feeds-header__profile">
+              <div className="feedsHeader">
+                <div className="feedsHeaderProfile">
                   <img
                     alt="프로필 사진"
-                    className="profile-image"
+                    className="profileImage"
                     src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
                   />
                   <span>candy_lp</span>
@@ -50,11 +70,11 @@ const Main = () => {
               </div>
               <img
                 alt="피드 이미지"
-                className="feed-image"
+                className="feedImage"
                 src="https://images.unsplash.com/photo-1538943186303-104afadcbb16?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
               />
-              <div className="feed-icons">
-                <div className="feed-icons__left">
+              <div className="feedIcons">
+                <div className="feedIconsLeft">
                   <i className="fas fa-heart" />
                   <i className="far fa-comment fa-flip-horizontal" />
                   <img
@@ -66,7 +86,7 @@ const Main = () => {
                 </div>
                 <i className="far fa-bookmark" />
               </div>
-              <div className="feed-heart">
+              <div className="feedHeart">
                 <img
                   alt="프로필 이미지"
                   width="20"
@@ -77,42 +97,59 @@ const Main = () => {
                   <span>youworld</span>님 <span>외 10명</span>이 좋아합니다
                 </div>
               </div>
-              <p className="feed-content">
+              <p className="feedContent">
                 <span>candy_lp</span> 너-무 행복했던 4월 1일💕...
                 <span>더 보기</span>
               </p>
-              <div className="feed-comments">
-                <div className="feed-comment">
+              <div className="feedComments">
+                <div className="feedComment">
                   <p>
-                    <span className="comment-id">qxxxqwwi</span>
-                    <span className="comment-content">👍👍</span>
+                    <span className="commentId">qxxxqwwi</span>
+                    <span className="commentContent">👍👍</span>
                   </p>
-                  <div className="comment-icon__wrapper">
+                  <div className="commentIconWrapper">
                     <i className="far fa-heart heart false" />
                   </div>
                 </div>
+                {comments.map((comment, index) => (
+                  <Comment comment={comment} key={index} />
+                ))}
               </div>
-              <p className="feed-time">42분 전</p>
-              <div className="write-comment">
+              <p className="feedTime">42분 전</p>
+              <div className="writeComment">
                 <input
-                  className="write-comment__input"
+                  onKeyUp={handleComment}
+                  className="writeCommentInput"
                   placeholder="댓글 달기..."
+                  value={value}
+                  onChange={handleCommentInput}
                 />
-                <span className="write-comment__btn">게시</span>
+                <span
+                  onClick={handleCommentBtn}
+                  className={
+                    value
+                      ? value.length > 0
+                        ? 'writeCommentBtn'
+                        : 'noWriteCommntBtn'
+                      : 'noValue'
+                  }
+                >
+                  게시
+                </span>
               </div>
             </article>
           </section>
-          <aside className="main-right">
-            <div className="user-profile">
-              <div className="user-profile__img">
+          <aside className="mainRight">
+            <div className="userProfile">
+              <div className="userProfileImg">
                 <img
                   alt="프로필 이미지"
                   src="https://avatars.githubusercontent.com/u/52394741?s=200&v=4"
                 />
               </div>
-              <div className="user-profile__info">
-                <span className="user-id">wecode_bootcamp</span>
-                <span className="user-name">WeCode | 위코드</span>
+              <div className="userProfileInfo">
+                <span className="userId">wecode_bootcamp</span>
+                <span className="userName">WeCode | 위코드</span>
               </div>
             </div>
             <div className="story">
@@ -120,7 +157,7 @@ const Main = () => {
                 <span>스토리</span>
                 <span>모두 보기</span>
               </div>
-              <div className="story-users">
+              <div className="storyUsers">
                 <img
                   alt="프로필 이미지"
                   src="https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fCVFQyU4MiVBQyVFQiU5RSU4Q3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
@@ -130,7 +167,7 @@ const Main = () => {
                   <span>16분 전 </span>
                 </div>
               </div>
-              <div className="story-users">
+              <div className="storyUsers">
                 <img
                   alt="프로필 이미지"
                   src="https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzB8fCVFQyU4MiVBQyVFQiU5RSU4Q3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
@@ -140,7 +177,7 @@ const Main = () => {
                   <span>3시간 전 </span>
                 </div>
               </div>
-              <div className="story-users">
+              <div className="storyUsers">
                 <img
                   alt="프로필 이미지"
                   src="https://images.unsplash.com/photo-1510337550647-e84f83e341ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80"
@@ -156,7 +193,7 @@ const Main = () => {
                 <span>회원님을 위한 추천</span>
                 <span>모두 보기</span>
               </div>
-              <div className="recommendation-users">
+              <div className="recommendationUsers">
                 <img
                   alt="프로필 이미지"
                   src="https://images.unsplash.com/photo-1680009178685-34784413ffe1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM0fHRvd0paRnNrcEdnfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
@@ -167,7 +204,7 @@ const Main = () => {
                 </div>
                 <span className="follow">팔로우</span>
               </div>
-              <div className="recommendation-users">
+              <div className="recommendationUsers">
                 <img
                   alt="프로필 이미지"
                   src="https://plus.unsplash.com/premium_photo-1679822641085-b40f412dcd7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDMyfHRvd0paRnNrcEdnfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
@@ -178,7 +215,7 @@ const Main = () => {
                 </div>
                 <span className="follow">팔로우</span>
               </div>
-              <div className="recommendation-users">
+              <div className="recommendationUsers">
                 <img
                   alt="프로필 이미지"
                   src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80"

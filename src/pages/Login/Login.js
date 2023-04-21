@@ -1,36 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.scss';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [valid, setValid] = useState(false);
   const navigate = useNavigate();
+
   const handleLogin = () => {
     navigate('/main');
   };
+
+  const saveUserId = event => {
+    let userId = event.target.value;
+    setId(userId);
+    checkValid();
+  };
+
+  const saveUserPassword = event => {
+    let userPassword = event.target.value;
+    setPassword(userPassword);
+    checkValid();
+  };
+
+  const checkValid = () => {
+    if (id.indexOf('@') !== -1 && password.length >= 4) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   checkValid();
+  // }, [password, id]);
+
   return (
     <main className="container">
       <div className="wrapper">
-        <div className="login-wrapper">
+        <div className="loginWrapper">
           <div className="login">
-            <h1 className="login-title">Westagram</h1>
-            <div className="login-id__wrapper">
+            <h1 className="loginTitle">Westagram</h1>
+            <div className="loginIdWrapper">
               <input
+                onChange={saveUserId}
                 placeholder="전화번호, 사용자 이름 또는 이메일"
                 type="text"
-                className="login-id"
+                className="loginId"
               />
             </div>
-            <div className="login-password__wrapper">
+            <div className="loginPasswordWrapper">
               <input
-                className="login-password"
+                onChange={saveUserPassword}
+                className="loginPassword"
                 placeholder="비밀번호"
                 type="password"
               />
             </div>
-            <button className="login-button" onClick={handleLogin}>
+            <button
+              className={valid ? 'loginButton loginButtonBlue' : 'loginButton'}
+              onClick={handleLogin}
+              disabled={valid ? false : true}
+            >
               로그인
             </button>
-            <span className="find-password">비밀번호를 잊으셨나요?</span>
+            <span className="findPassword">비밀번호를 잊으셨나요?</span>
           </div>
         </div>
       </div>
